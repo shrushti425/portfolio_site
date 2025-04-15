@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    @apply bg-slate-900;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-6xl mx-auto px-4 py-16 sm:px-6 lg:px-8;
+  }
+  
+  .nav-link {
+    @apply text-slate-400 hover:text-violet-400 transition-colors duration-200 relative;
+  }
+  
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-violet-400 transition-all duration-300;
+  }
+  
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 bg-violet-600 text-white rounded-lg hover:bg-violet-500 transition-all duration-300 
+           inline-flex items-center gap-2 relative overflow-hidden shadow-[0_0_15px_rgba(124,58,237,0.5)]
+           hover:shadow-[0_0_25px_rgba(124,58,237,0.7)] backdrop-blur-sm;
+  }
+  
+  .card {
+    @apply bg-slate-800/50 p-6 rounded-xl backdrop-blur-sm border border-slate-700/50
+           hover:border-violet-500/50 transition-all duration-300
+           hover:shadow-[0_0_30px_rgba(124,58,237,0.2)];
+  }
+
+  .skill-tag {
+    @apply px-3 py-1 rounded-full text-sm transition-all duration-300 relative
+           before:absolute before:inset-0 before:rounded-full before:border
+           before:border-violet-400/30 before:transition-all before:duration-300
+           hover:before:scale-110 hover:before:border-violet-400/60;
+  }
+
+  .geometric-pattern {
+    background-image: radial-gradient(circle at 1px 1px, rgba(124, 58, 237, 0.15) 1px, transparent 0);
+    background-size: 40px 40px;
+  }
+
+  .glow-text {
+    @apply relative;
+    text-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+  }
+
+  .animated-border {
+    @apply relative rounded-xl overflow-hidden;
+    &::before {
+      content: '';
+      @apply absolute inset-0 border-2 border-transparent rounded-xl;
+      background: linear-gradient(90deg, rgba(124, 58, 237, 0.3), rgba(139, 92, 246, 0.3)) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+    }
+  }
+}
+
+.glass-card {
+  @apply bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
